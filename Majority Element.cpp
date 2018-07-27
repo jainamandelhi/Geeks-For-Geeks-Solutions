@@ -33,7 +33,7 @@ int main() {
                 count++;
         }
         if(count>n/2)
-            cout<<majelement<<endl;
+            cout<<majelement<<endl; 
         else
             cout<<"NO Majority Element"<<endl;
     }

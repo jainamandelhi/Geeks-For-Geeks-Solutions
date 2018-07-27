@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	for(int m=0;m<t;m++)
+	{
+	    int n,even=0,odd=1;
+	    cin>>n;
+	    vector<int>arr(2*n);
+	    for(int j=0;j<n;j++)
+	    {
+	        int i;
+	        cin>>i;
+	        if(i%2==0)
+	        {
+	            arr[even]=i;
+	            even+=2;
+	        }
+	        else
+	        {
+	            arr[odd]=i;
+	            odd+=2;
+	        }
+	    }
+	    for(int k=0;k<2*n;k++)
+	    {
+	        if(arr[k]=='\0')
+	        continue;
+	        cout<<arr[k]<<" ";
+	    }
+	    cout<<endl;
+
+	}
+	return 0;
+}

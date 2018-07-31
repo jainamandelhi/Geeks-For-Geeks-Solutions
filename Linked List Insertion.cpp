@@ -88,7 +88,7 @@ void insertAtEnd(struct node** headRef, int newData)
         p=*headRef;
         while(p->next!=NULL)
             p=p->next;
-        p->next=tmp;
+        p->next=tmp; 
         tmp->next=NULL;
     }
 

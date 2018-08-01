@@ -65,7 +65,7 @@ int getMiddle(Node *head)
     while(temp!=NULL)
         {
             count++;
-            arr[i]=temp->data;
+            arr[i]=temp->data; 
             temp=temp->next;
             i++;
         }

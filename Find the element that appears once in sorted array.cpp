@@ -9,7 +9,7 @@ void search(vector<int>arr,int low,int high)
         cout<<arr[low]<<endl;
         return;
     }
-    else
+    else 
     {
         int mid=(low+high)/2;
         if(mid%2==0)

@@ -1,0 +1,15 @@
+int select(int arr[], int i)
+{
+    int max=arr[i],k=i;
+    for(int j=0;j<i;j++)
+    {
+        if(arr[j]>max)
+        {
+            max=arr[j];
+            k=j;
+        }
+    }
+    return k;
+    
+    // Your code here  
+}

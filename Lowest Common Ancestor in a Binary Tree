@@ -1,0 +1,21 @@
+Node * LCA(Node* root ,int n1 ,int n2 )
+{
+    Node *leftnode=NULL,*rightnode=NULL;
+    if(!root)
+        return root;
+    if(root->data==n1 || root->data==n2)
+        return root;
+    leftnode=LCA(root->left,n1,n2);
+    rightnode=LCA(root->right,n1,n2);
+    if(leftnode && rightnode)
+        return root;
+    else
+    {
+        if(leftnode)
+            return leftnode;
+        else
+            return rightnode;
+    }
+        
+   //Your code here 
+}

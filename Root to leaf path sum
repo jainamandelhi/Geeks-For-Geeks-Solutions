@@ -1,0 +1,10 @@
+bool hasPathSum(Node *root, int sum1)
+{
+    //bool a=0;
+    if(!root)
+        return 0;
+    if(root->data==sum1 && !root->left && !root->right)
+        return 1;
+    return(hasPathSum(root->left,sum1-root->data) || hasPathSum(root->right,sum1-root->data));
+   //Your code here
+}

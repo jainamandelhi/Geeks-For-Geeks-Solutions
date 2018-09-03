@@ -1,0 +1,39 @@
+struct node* findIntersection(struct node* head1, struct node* head2)
+{
+    vector<int>hash(1001,0);
+    vector<int>arr;
+    node *temp1=head1, *temp2=head2;
+    while(temp1!=NULL)
+    {
+        hash[temp1->data]++;
+        temp1=temp1->next;
+    }
+    while(temp2!=NULL)
+    {
+        //hash[temp2->data]++;
+        if(hash[temp2->data]>=1)
+        {
+            hash[temp2->data]--;
+            arr.push_back(temp2->data);
+        }
+        temp2=temp2->next;
+    }
+    sort(arr.begin(),arr.end());
+    node *head3=new (struct node);
+    head3->next=NULL;
+    if(arr.size()==0)
+        head3=NULL;
+    else
+        head3->data=arr[0];
+    temp1=head3;
+    for(int i=1;i<arr.size();i++)
+    {
+        node *p=new (struct node);
+        temp1->next=p;
+        p->data=arr[i];
+        p->next=NULL;
+        temp1=temp1->next;
+    }
+    return head3;
+    // code here
+}

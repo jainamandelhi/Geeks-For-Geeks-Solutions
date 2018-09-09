@@ -1,0 +1,19 @@
+struct node* newnode(int data)
+{
+    struct node*p=new node;
+    p->data=data;
+    p->left=NULL;
+    p->right=NULL;
+    return p;
+}
+struct node* insert(struct node* node, int data)
+{
+    if(!node)
+        return newnode(data);
+    if(data<node->data)
+        node->left=insert(node->left,data);
+    else if(data>node->data)
+        node->right=insert(node->right,data);
+    return node;
+    // Your code here
+}

@@ -1,0 +1,16 @@
+void dfs(int s, vector<int> g[], bool vis[])
+{
+    if(vis[s]==0)
+    {
+        vis[s]=1;
+        cout<<s<<" ";
+        for(long long i=0;i<g[s].size();i++)
+        {
+            if(vis[g[s][i]]==0)
+            {
+                dfs(g[s][i],g,vis);
+            }
+        }
+    }
+    // Your code here
+}

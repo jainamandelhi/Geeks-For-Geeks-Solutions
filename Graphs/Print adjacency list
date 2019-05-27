@@ -1,0 +1,13 @@
+void printGraph(vector<int> arr[], int v)
+{
+        for(int i=0;i<v;i++)
+        {
+            cout<<i;
+            for(int j=0;j<arr[i].size();j++)
+            {
+                cout<<"-> "<<arr[i][j];
+            }
+            cout<<endl;
+        }
+    // Your code here
+}

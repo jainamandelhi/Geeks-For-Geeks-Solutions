@@ -1,0 +1,19 @@
+void bfs(char str[],int i,string s,int n,int flag)
+{
+    if(i>=n)
+    {
+        cout<<s<<"&";
+        return;
+    }
+    bfs(str,i+1,s+str[i],n,1);
+    if(flag)
+    bfs(str,i,s+" ",n,0);
+}
+void  printSpace(char str[])
+{
+    int i=0;
+    while(str[i]!='\0')
+        i++;
+    bfs(str,0,"",i,0);
+//Your code here
+}

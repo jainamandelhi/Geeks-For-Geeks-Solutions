@@ -1,0 +1,23 @@
+void dfs(Node* root,vector<int>v)
+{
+    v.push_back(root->data);
+    if(!root->left && !root->right)
+    {
+        for(int i=0;i<v.size();i++)
+            cout<<v[i]<<" ";
+        cout<<"#";
+        return;
+    }
+    if(root->left)
+        dfs(root->left,v);
+    if(root->right)
+        dfs(root->right,v);
+    v.pop_back();
+}
+void printPaths(Node* root)
+{
+    vector<int>v;
+    dfs(root,v);
+    cout<<endl;
+    // Code here
+}

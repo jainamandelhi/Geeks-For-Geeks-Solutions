@@ -1,0 +1,11 @@
+bool hasPathSum(Node *node, int sum)
+{
+    if(!node)
+        return 0;
+    if(!node->left && !node->right && sum==node->data)
+        return 1;
+    bool t1=hasPathSum(node->left,sum-node->data);
+    bool t2=hasPathSum(node->right,sum-node->data);
+    return t1||t2;
+   //Your code here
+}

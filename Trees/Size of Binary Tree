@@ -1,0 +1,10 @@
+int getSize(Node* node)
+{
+    int ans=1;
+    if(!node)
+        return 0;
+    ans+=getSize(node->left);
+    ans+=getSize(node->right);
+    return ans;
+   // Your code here
+}

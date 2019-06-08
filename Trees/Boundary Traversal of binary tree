@@ -1,0 +1,39 @@
+void left(Node *root)
+{
+    if(!root->left && !root->right)
+        return;
+    cout<<root->data<<" ";
+    if(root->left)
+        left(root->left);
+    else if(root->right)
+        left(root->right);
+}
+void leaves(Node *root)
+{
+    if(!root->left && !root->right)
+        cout<<root->data<<" ";
+    if(root->left)
+        leaves(root->left);
+    if(root->right)
+        leaves(root->right);
+}
+void right(Node *root)
+{
+    if(!root->left && !root->right)
+        return;
+    if(root->right)
+        right(root->right);
+    else if(root->left)
+        right(root->left);
+    cout<<root->data<<" ";
+}
+void printBoundary(Node *root)
+{
+    cout<<root->data<<" ";
+    if(root->left)
+        left(root->left);
+    leaves(root);
+    if(root->right)
+        right(root->right);
+     //Your code here
+}

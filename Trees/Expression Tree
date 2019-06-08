@@ -1,0 +1,26 @@
+int fun(string s)
+{
+    float a=0;
+    int n=s.size();
+    for(int i=0;i<n;i++)
+    {
+        a=a*10;
+        a=a+(s[i]-'0');
+    }
+    a=a*1.0;
+    return a;
+}
+int evalTree(node* root)
+{
+    if(!root->left && !root->right)
+        return fun(root->data);
+    if(root->data=="+")
+        return evalTree(root->left) + evalTree(root->right);
+    if(root->data=="-")
+        return evalTree(root->left) - evalTree(root->right);
+    if(root->data=="*")
+        return evalTree(root->left) * evalTree(root->right);
+    if(root->data=="/")
+        return evalTree(root->left) / evalTree(root->right);
+    //Your code here
+}

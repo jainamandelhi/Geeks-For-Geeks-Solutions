@@ -1,0 +1,32 @@
+et* constructTree(char postfix[])
+{ 
+    stack<et*>s;
+    int i=0;
+    
+    while(postfix[i]!='\0')
+    {
+        if(postfix[i]=='+' || postfix[i]=='-' || postfix[i]=='*' || postfix[i]=='/' || postfix[i] == '^')
+        {
+            et* top1=s.top();
+            s.pop();
+            et* top2=s.top();
+            s.pop();
+            et *temp = new et;
+            temp->left=top2;
+            temp->right=top1;
+            temp->value=postfix[i];
+            s.push(temp);
+        }
+        else
+        {
+            et *temp = new et;
+            temp->left=NULL;
+            temp->right=NULL;
+            temp->value=postfix[i];
+            s.push(temp);
+        }
+        i++;
+    }
+    return s.top();
+//code here
+}

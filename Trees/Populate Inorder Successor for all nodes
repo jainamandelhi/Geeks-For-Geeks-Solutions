@@ -1,0 +1,15 @@
+void dfs(struct node *p,vector<int>&arr)
+{
+    if(p->left)
+        dfs(p->left,arr);
+    arr.push_back(p->data);
+    if(p->right)
+        dfs(p->right,arr);
+}
+void populateNext(struct node* p)
+{
+    if(p->left)
+        populateNext(p->left);
+    q.push()
+// Your code goes here
+}

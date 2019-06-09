@@ -1,0 +1,13 @@
+int dfs(Node *node,int target,int ans)
+{
+    if(!node)
+        return 0;
+    if(target==node->data)
+        return ans;
+    return max(dfs(node->left,target,ans+1) , dfs(node->right,target,ans+1));
+}
+int getLevel(struct Node *node, int target)
+{
+    return dfs(node,target,1);
+	//code here
+}

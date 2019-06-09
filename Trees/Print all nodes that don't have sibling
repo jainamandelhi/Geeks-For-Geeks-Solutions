@@ -1,0 +1,30 @@
+void dfs(Node* node,map<int,int>&m)
+{
+    if(!node->left && !node->right)
+        return;
+    if(!node->left && node->right)
+        m[node->right->data]++;
+    if(node->left && !node->right)
+        m[node->left->data]++;
+    if(node->left)
+        dfs(node->left,m);
+    if(node->right)
+        dfs(node->right,m);
+   // Your code here
+}
+void printSibling(Node* node)
+{
+    map<int,int>m;
+    dfs(node,m);
+    map<int,int>::iterator itr;
+    if(m.size()==0)
+    {
+        cout<<-1;
+        return;
+    }
+    for(itr=m.begin();itr!=m.end();itr++)
+    {
+        cout<<itr->first<<" ";
+    }
+   // Your code here
+}

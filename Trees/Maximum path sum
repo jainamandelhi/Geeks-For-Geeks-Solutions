@@ -1,0 +1,29 @@
+int dfs(Node *node,int s)
+{
+    int l,r;
+    if(!node)
+        return s;
+    if(!node->left && !node->right)
+        return s+node->data;
+    if(node->left){
+        l=dfs(node->left,s+node->data);
+       // s-=node->data;
+    }
+    if(node->right){
+        r=dfs(node->right,s+node->data);
+       // s-=node->data;
+    }
+    return max(l,r);
+}
+int maxPathSum(struct Node *node)
+{
+    if(!node)
+        return 0;
+    if(!node->left || !node->right)
+        return 0;
+    int l=dfs(node->left,0);
+    int r=dfs(node->right,0);
+    l=l+r+node->data;
+    return max(l,max(maxPathSum(node->left),maxPathSum(node->right)));
+//add code here.
+}

@@ -1,0 +1,27 @@
+int cnt;
+void dfs(Node *root,int k,int ans)
+{
+    if(ans==k)
+        cnt++;
+    if(!root)
+        return;
+    if(root->left)
+        dfs(root->left,k,ans+root->left->data);
+    if(root->right)
+        dfs(root->right,k,ans+root->right->data);
+}
+void dfs1(Node *root,int k)
+{
+    dfs(root,k ,root->data);
+    if(root->left)
+        dfs1(root->left,k);
+    if(root->right)
+        dfs1(root->right,k);
+}
+int printCount(Node *root,int k)
+{
+    cnt=0;
+    dfs1(root,k);
+    return cnt;
+//add code here.
+}

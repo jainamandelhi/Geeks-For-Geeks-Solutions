@@ -1,0 +1,31 @@
+void dfs(Node *root,int len,int sum,int &max_len,int &max_sum)
+{
+    if(!root)
+        return;
+    if(!root->left && !root->right)
+    {
+        if(max_len<len)
+        {
+            max_len=len;
+            max_sum=sum;
+        }
+        else if(max_len==len)
+        {
+            max_sum=max(sum,max_sum);
+        }
+        return;
+    }
+    if(root->left)
+        dfs(root->left,len+1,sum+root->left->data,max_len,max_sum);
+    if(root->right)
+        dfs(root->right,len+1,sum+root->right->data,max_len,max_sum);
+}
+int sumOfLongRootToLeafPath(Node* root)
+{
+    if(!root)
+        return 0;
+    int ans=1,ans1=root->data;
+    dfs(root,1,root->data,ans,ans1);
+    return ans1;
+	// Code here
+}

@@ -1,0 +1,18 @@
+int rightLeafSum(Node* root)
+{
+    int sum=0;
+    if(!root)
+    return 0;
+    if(root->right)
+    {
+
+        if(!root->right->left && !root->right->right)
+            sum+=root->right->data;
+    }
+        if(root->left)
+            sum+=rightLeafSum(root->left);
+        if(root->right)
+            sum+=rightLeafSum(root->right);
+        return sum;
+    // Code here
+}

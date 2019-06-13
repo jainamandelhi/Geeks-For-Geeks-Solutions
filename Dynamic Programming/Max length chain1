@@ -1,0 +1,25 @@
+bool fun(val l,val r)
+{
+    return l.first < r.first;
+}
+int maxChainLen(struct val p[],int n)
+{
+    int ld[n];
+    int maxi=1;
+    for(int i=0;i<n;i++)
+        ld[i]=1;
+    sort(p,p+n,fun);
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(p[i].first>p[j].second && ld[j]+1>ld[i])
+            {
+                ld[i]=ld[j]+1;
+                maxi=max(maxi,ld[i]);
+            }
+        }
+    }
+    return maxi;
+//Your code here
+}

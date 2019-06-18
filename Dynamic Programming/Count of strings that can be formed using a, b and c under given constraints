@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+int dfs(int n,int dp[][2][3],int b,int c)
+{
+    if(b<0 || c<0)
+        return 0;
+    if(b==0 && c==0)
+        return 1;
+    if(n==0)
+        return 1;
+    if(dp[n][b][c]!=-1)
+        return dp[n][b][c];
+    dp[n][b][c] = dfs(n-1,dp,b-1,c) + dfs(n-1,dp,b,c-1) + dfs(n-1,dp,b,c);
+    return dp[n][b][c];
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int dp[n+1][2][3];
+        memset(dp,-1,sizeof(dp));
+        cout<<dfs(n,dp,1,2)<<endl;
+    }
+}

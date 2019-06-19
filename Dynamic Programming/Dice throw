@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+ll dfs(ll m,int n,ll x,ll index,vector<vector<ll> >&dp)
+{
+    if(x<0 || index>n)
+        return 0;
+    if(index==n)
+    {
+        if(x>=1 && x<=m)
+            return 1;
+        else
+            return 0;
+    }
+    if (dp[x][index]!=-1)
+        return dp[x][index];
+    ll ans=0;
+    for(ll i=1;i<=m;i++)
+        ans+=dfs(m,n,x-i,index+1,dp);
+    dp[x][index]=ans;
+    return ans;
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll m,n,x;
+        cin>>m>>n>>x;
+        vector<vector<ll> >dp(55,vector<ll>(55,-1));
+        cout<<dfs(m,n,x,1,dp)<<endl;
+    }
+}

@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int dfs(int sum,int arr[],vector<vector<int> >&dp,int i,int n)
+{
+    if(sum==0)
+        return 1;
+    if(sum<0 || i>=n)
+        return 0;
+    if(dp[sum][i]!=-1)
+        return dp[sum][i];
+    dp[sum][i]=dfs(sum-arr[i],arr,dp,i+1,n) + dfs(sum,arr,dp,i+1,n);
+    return dp[sum][i];
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int arr[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
+        }
+        int sum;
+        cin>>sum;
+        vector<vector<int> >dp(sum+1,vector<int>(n+1,-1));
+        cout<<dfs(sum,arr,dp,0,n)<<endl;
+    }
+}

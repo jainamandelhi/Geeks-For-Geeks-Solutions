@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+int pres(char a)
+{
+    if(a=='^')
+        return 3;
+    else if(a=='*' || a=='/')
+        return 2;
+    else if(a=='+' || a=='-')
+        return 1;
+    return 4;
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        int n=s.size();
+        stack<char>st;
+        st.push('N');
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='(')
+                st.push(s[i]);
+            else if(s[i]==')')
+            {
+                while(st.top()!='(')
+                {
+                    cout<<st.top();
+                    st.pop();
+                }
+                st.pop();
+            }
+            else if(s[i]>='a' && s[i]<='z')
+                cout<<s[i];
+            else if(s[i]>='A' && s[i]<='Z')
+                cout<<s[i];
+            else if(pres(s[i])<=pres(st.top()))
+            {
+                while(st.top()!='N' && pres(st.top())>=pres(s[i]) && st.top()!='(' && st.top()!=')')
+                {
+                    cout<<st.top();
+                    st.pop();
+                }
+                //if(st.top()=='(' || st.top()==')')
+                //    st.pop();
+                st.push(s[i]);
+            }
+            else
+                st.push(s[i]);
+        }
+        while(st.top()!='N')
+        {
+            cout<<st.top();
+            st.pop();
+        }
+        cout<<endl;
+    }
+}

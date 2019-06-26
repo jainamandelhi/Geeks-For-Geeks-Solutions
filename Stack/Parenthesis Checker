@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        int n=s.size(),flag=0;
+        stack<char>st;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+                st.push(s[i]);
+            else
+            {
+                if(st.size()>0 && st.top()=='{' && s[i]=='}')
+                    st.pop();
+                else if(st.size()>0 && st.top()=='(' && s[i]==')')
+                    st.pop();
+                else if(st.size()>0 && st.top()=='[' && s[i]==']')
+                    st.pop();
+                else
+                {
+                    flag=1;
+                    cout<<"not balanced";
+                    break;
+                }
+            }
+           // cout<<st.top()<<" ";
+        }
+        if(st.size()>0 && flag==0)
+            cout<<"not balanced";
+        else if(flag==0)
+            cout<<"balanced";
+        cout<<endl;
+    }
+}

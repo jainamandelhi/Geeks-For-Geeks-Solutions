@@ -1,0 +1,42 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*You are required to complete this method*/
+int maxArea(int M[MAX][MAX],int n,int m)
+{
+    int ans2=0;
+    for(int i=0;i<m;i++)
+    {
+        vector<int>temp(n);
+        for(int j=i;j<m;j++)
+        {
+          
+            for(int k=0;k<n;k++)
+                temp[k]+=M[k][j];
+            
+            //  for(int k=0;k<n;k++)
+              //  cout<<temp[k]<<"  ";
+                
+               //  cout<<endl;
+                    
+                
+            int find=j-i+1,ans=0;
+            vector<int>hell(n);
+          //  cout<<find<<endl;
+            if(temp[0]==find)
+                hell[0]=1;
+            for(int k=1;k<n;k++)
+            {
+                if(temp[k]==find && temp[k-1]==find)
+                    hell[k]=hell[k-1]+1;
+                    else if(temp[k]==find)
+                       hell[k]=1;
+            }
+            sort(hell.begin(),hell.end());
+           //cout<<hell[n-1]<<"  "<<find;
+            //cout<<endl;
+            ans=hell[n-1]*find;
+            ans2=max(ans2,ans);
+        }
+    }
+    return ans2;
+    //Your code here
+}

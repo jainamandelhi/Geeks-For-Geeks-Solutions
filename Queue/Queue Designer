@@ -1,0 +1,17 @@
+queue<int>_push(int arr[],int n)
+{
+    queue<int>q;
+    for(int i=0;i<n;i++)
+        q.push(arr[i]);
+    return q;
+   //return a queue with all elements of arr inserted in it
+}
+void _pop(queue<int>s)
+{
+    while(!s.empty())
+    {
+        cout<<s.front()<<" ";
+        s.pop();
+    }
+    //print front and dequeue for each element until it becomes empty
+}

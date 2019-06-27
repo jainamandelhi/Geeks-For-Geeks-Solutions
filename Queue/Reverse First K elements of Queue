@@ -1,0 +1,35 @@
+/*This is a function problem.You only need to complete the function given below*/
+//User function Template for C++
+queue<ll> modifyQueue(queue<ll> q, int k)
+{
+    queue<ll>qt;
+    stack<ll>st;
+   // stack<int>st;
+    for(int i=0;i<k;i++)
+    {
+        st.push(q.front());
+        q.pop();
+    }
+    while(!q.empty())
+    {
+        qt.push(q.front());
+        q.pop();
+    }
+    while(!st.empty())
+    {
+        q.push(st.top());
+        st.pop();
+    }
+    while(!qt.empty())
+    {
+        q.push(qt.front());
+        qt.pop();
+    }
+    /*while(!qt.empty())
+    {
+        cout<<qt.front()<<" ";
+        qt.pop();
+    }*/
+    return q;
+    //add code here.
+}

@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mp make_pair
+#define pb push_back
+using namespace std;
+int main()
+{
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        map<ll,ll>m;
+        for(ll i=0;i<n;i++)
+        {
+            ll a,b;
+            cin>>a>>b;
+            m[a]=b;
+        }
+        for(ll i=1;i<=30;i++)
+        {
+            if(m[i]==0)
+                m[i]=i;
+        }
+        queue<pair<int,int> >q;
+        q.push(mp(1,0));
+        while(!q.empty())
+        {
+            ll fi=q.front().first;
+            ll se=q.front().second;
+            q.pop();
+            if(fi>=30)
+            {
+                cout<<se<<endl;
+                break;
+            }
+            for(ll i=1;i<=6;i++)
+                q.push(mp(m[fi+i],se+1));
+        }
+    }
+}

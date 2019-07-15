@@ -1,0 +1,20 @@
+void deleteNode(Node **head, int x)
+{
+    if(!*head)
+        return;
+    Node *temp=*head;
+    if(x==1)
+    {
+        temp=temp->next;
+        *head=temp;
+        return;
+    }
+    x-=2;
+    while(x--)
+    {
+        temp=temp->next;
+    }
+    temp->next=temp->next->next;
+    //return *head;
+  //Your code here
+}

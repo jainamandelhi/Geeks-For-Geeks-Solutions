@@ -1,0 +1,16 @@
+bool dfs(Node *head,int cnt)
+{
+    while(head && cnt++<102)
+    {
+        head=head->next;
+    }
+    if(cnt<102)
+    return 0;
+    else
+    return 1;
+}
+bool isCircular(Node *head)
+{
+    return dfs(head,0);
+   // Your code here
+}

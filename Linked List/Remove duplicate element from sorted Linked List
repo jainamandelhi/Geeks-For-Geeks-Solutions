@@ -1,0 +1,14 @@
+int LISS(struct Node *root)
+{
+    if(!root)
+        return 0;
+    int a=1;
+    if(root->left)
+        a+=LISS(root->left->left)+LISS(root->left->right);
+    if(root->right)
+        a+=LISS(root->right->left)+LISS(root->right->right);
+    int b=0;
+    b=LISS(root->left)+LISS(root->right);
+    return max(a,b);
+    //Code here
+}

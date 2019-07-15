@@ -1,0 +1,44 @@
+Node* constructLinkedMatrix(int mat[MAX][MAX], int n)
+{
+    if(n==0)
+        return NULL;
+    queue<Node *>q;
+    Node *root;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            Node *temp1=new Node;
+            temp1->right=NULL;
+            temp1->down=NULL;
+            temp1->data=mat[i][j];
+            Node* temp;
+            if(i==0 & j==0)
+                root=temp1;
+            if(j==0)
+            {
+                temp=temp1;
+                //q.push(temp);
+                //continue;
+            }
+            else
+            {
+                temp->right=temp1;
+                temp=temp1;
+            }
+            //q.push(temp); 
+            if(i!=0)
+            {
+                temp1=q.front();
+                q.pop();
+                temp1->down=temp;
+                q.push(temp);
+                //cout<<temp1->data<<" "<<temp1->down->data<<endl;
+                continue;
+            }
+            q.push(temp);
+        }
+    }
+    return root;
+    // code here
+}

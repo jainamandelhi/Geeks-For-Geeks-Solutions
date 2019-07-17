@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vector<pair<pair<int,int>,int> >v;
+        for(int i=0;i<n;i++)
+        {
+            int a;
+            cin>>a;
+            v.push_back(make_pair(make_pair(0,a),0));
+        }
+        for(int i=0;i<n;i++)
+        {
+            int a;
+            cin>>a;
+            v[i].first.first=a;
+            v[i].second=i;
+        }
+        sort(v.begin(),v.end());
+        int curr=v[0].first.first;
+        cout<<v[0].second+1<<" ";
+        for(int i=1;i<n;i++)
+        {
+            if(v[i].first.second>=curr)
+            {
+                cout<<v[i].second+1<<" ";
+                curr=v[i].first.first;
+            }
+        }
+        cout<<endl;
+    }
+}

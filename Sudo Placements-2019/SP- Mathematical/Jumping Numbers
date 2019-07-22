@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define pb push_back
+#define mp make_pair
+using namespace std;
+int main()
+{
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        queue<pair<ll,ll> >q;
+        for(ll i=1;i<10;i++)
+            q.push(mp(i,1));
+        //q.push(mp(101,3));
+        cout<<0<<" ";
+        map<ll,ll>m;
+        map<ll,ll>ans;
+        map<ll,ll>::iterator itr;
+        while(!q.empty())
+        {
+            ll f=q.front().first;
+            ll s=q.front().second;
+            q.pop();
+            if(f<=n)
+            ans[f]++;
+            ll temp=f%10;
+            ll temp1=n+2;
+            if(temp!=0)
+                temp1=f*10+temp-1;
+            if(temp1<=n && !m[temp1]){
+                m[temp1]++;
+                q.push(mp(temp1,s+1));
+            }
+            temp=f%10;
+            temp1=n+2;
+            temp1=f*10+temp+1;
+            if(temp1<=n && temp!=9 && !m[temp1]){
+                m[temp1]++;
+                q.push(mp(temp1,s+1));
+            }
+            temp=f/pow(10,s-1);
+            temp1=n+2;
+            if(temp!=1 && !m[temp1]){
+                m[temp1]++;
+                temp1=f+(temp-1)*pow(10,s);
+            }
+            if(temp1<=n && !m[temp1]){
+                m[temp1]++;
+                q.push(mp(temp1,s+1));
+            }
+            if(temp!=9 && f+(temp+1)*pow(10,s)<=n && !m[f+(temp+1)*pow(10,s)]){
+                m[f+(temp+1)*pow(10,s)]++;
+                q.push(mp(f+(temp+1)*pow(10,s),s+1));
+            }
+        }
+        for(itr=ans.begin();itr!=ans.end();itr++)
+            cout<<itr->first<<" ";
+        cout<<endl;
+    }
+}
